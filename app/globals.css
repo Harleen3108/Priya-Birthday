@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+:root {
+  --blush: #F9D9DE;
+  --cream: #FBF8F3;
+  --hot-pink: #F45B9E;
+  --black: #1a1a1a;
+}
+
+@theme inline {
+  --color-blush: var(--blush);
+  --color-cream: var(--cream);
+  --color-hot-pink: var(--hot-pink);
+  --color-black-accent: var(--black);
+  --font-display: var(--font-baloo);
+  --font-script: var(--font-caveat);
+  --font-body: var(--font-poppins);
+  --shadow-card: 0 8px 32px rgba(26, 26, 26, 0.08), 0 2px 8px rgba(244, 91, 158, 0.1);
+}
+
+body {
+  background-color: var(--blush);
+  color: var(--black);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+/* Stippled / dotted background texture */
+.stipple-bg {
+  background-color: var(--blush);
+  background-image: radial-gradient(circle, rgba(26, 26, 26, 0.06) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+.page-bg {
+  background-color: var(--blush);
+  background-image: radial-gradient(circle, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+  background-size: 14px 14px;
+  min-height: 100vh;
+}
+
+/* Bubble letter sticker text effect */
+.bubble-text {
+  color: var(--hot-pink);
+  text-shadow:
+    2px 2px 0 var(--black),
+    3px 3px 0 var(--black),
+    -1px -1px 0 var(--black),
+    1px -1px 0 var(--black),
+    -1px 1px 0 var(--black);
+  -webkit-text-stroke: 1.5px var(--black);
+  paint-order: stroke fill;
+}
+
+.bubble-text-sm {
+  color: var(--hot-pink);
+  text-shadow:
+    1.5px 1.5px 0 var(--black),
+    2px 2px 0 var(--black);
+  -webkit-text-stroke: 1px var(--black);
+}
+
+.font-display {
+  font-family: var(--font-baloo), cursive;
+}
+
+.font-script {
+  font-family: var(--font-caveat), cursive;
+}
+
+.font-body {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+/* Polaroid photo frame */
+.polaroid {
+  background: white;
+  padding: 8px 8px 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: rotate(var(--rotate, -2deg));
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03);
+  z-index: 10;
+}
+
+/* Circular profile with dotted ring */
+.profile-ring {
+  position: relative;
+}
+
+.profile-ring::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 3px dashed var(--hot-pink);
+}
+
+/* Sticker hover effect */
+.sticker-hover {
+  transition: transform 0.25s ease;
+}
+
+.sticker-hover:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+}
+
+/* Scroll reveal helper */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Birthday hero soft pink gradient background */
+.birthday-gradient {
+  background:
+    radial-gradient(circle at 25% 25%, rgba(249, 217, 222, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(244, 91, 158, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 214, 224, 0.7) 0%, transparent 55%),
+    linear-gradient(135deg, #fdeef0 0%, #fbf8f3 50%, #fbe4ea 100%);
+}
+
+/* Glowing neon ring around the profile photo */
+.birthday-glow {
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 30px 8px rgba(244, 91, 158, 0.45),
+    0 0 60px 20px rgba(244, 91, 158, 0.25);
+  animation: birthday-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes birthday-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(255, 255, 255, 0.6),
+      0 0 30px 8px rgba(244, 91, 158, 0.4),
+      0 0 60px 20px rgba(244, 91, 158, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 45px 12px rgba(244, 91, 158, 0.6),
+      0 0 90px 30px rgba(244, 91, 158, 0.35);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Luxury circular portrait frame — layered neon halo + glassmorphism
+   ══════════════════════════════════════════════════════════════ */
+
+/* wrapper: very subtle floating movement */
+.lux-frame {
+  position: relative;
+  border-radius: 50%;
+  animation: lux-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes lux-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* soft ambient bloom behind the whole frame */
+.lux-bloom {
+  position: absolute;
+  inset: -16%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 111, 174, 0.55) 0%,
+    rgba(255, 214, 232, 0.4) 38%,
+    rgba(248, 216, 168, 0.25) 58%,
+    transparent 72%
+  );
+  filter: blur(34px);
+  animation: lux-breathe 4.5s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes lux-breathe {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.07); }
+}
+
+/* second, tighter glow layer for a rim-light halo */
+.lux-halo {
+  position: absolute;
+  inset: -4%;
+  border-radius: 50%;
+  box-shadow:
+    0 0 40px 10px rgba(255, 111, 174, 0.5),
+    0 0 80px 30px rgba(255, 111, 174, 0.28),
+    0 0 130px 50px rgba(255, 214, 232, 0.35);
+  animation: lux-glow-pulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes lux-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 40px 10px rgba(255, 111, 174, 0.45),
+      0 0 80px 30px rgba(255, 111, 174, 0.25),
+      0 0 130px 50px rgba(255, 214, 232, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 55px 14px rgba(255, 111, 174, 0.7),
+      0 0 100px 40px rgba(255, 111, 174, 0.4),
+      0 0 160px 60px rgba(255, 214, 232, 0.45);
+  }
+}
+
+/* rotating conic shimmer sitting on the ring (metallic sweep) */
+.lux-shimmer {
+  position: absolute;
+  inset: -3%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #f8d8a8, #ff6fae, #ffd6e8, #ffffff, #f8d8a8, #ff6fae, #ffd6e8, #f8d8a8
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 18px), #000 calc(100% - 16px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 18px), #000 calc(100% - 16px));
+  filter: blur(3px) brightness(1.15);
+  opacity: 0.85;
+  animation: lux-rotate 16s linear infinite;
+  z-index: 1;
+}
+@keyframes lux-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* metallic champagne-gold outer ring (the padded box shows as the ring) */
+.lux-ring-gold {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, #f8d8a8 0%, #fff6e6 28%, #e9b978 55%, #f8d8a8 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    0 22px 50px rgba(214, 120, 158, 0.4);
+}
+
+/* translucent pink secondary ring */
+.lux-ring-pink {
+  background: linear-gradient(135deg, rgba(255, 111, 174, 0.65), rgba(255, 214, 232, 0.45));
+}
+
+/* glossy acrylic reflection streaks over the photo */
+.lux-glass {
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0) 32%,
+    rgba(255, 255, 255, 0) 62%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  mix-blend-mode: screen;
+}
+/* inner glow ring on top of the photo */
+.lux-inner-glow {
+  box-shadow: inset 0 0 30px 6px rgba(255, 214, 232, 0.55);
+}
+
+/* twinkling sparkles */
+.lux-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, rgba(255, 214, 232, 0.9) 40%, transparent 70%);
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8);
+  animation: lux-twinkle 2.4s ease-in-out infinite;
+}
+@keyframes lux-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* floating heart particles */
+.lux-heart {
+  position: absolute;
+  color: #ff6fae;
+  filter: drop-shadow(0 0 4px rgba(255, 111, 174, 0.6));
+  animation: lux-heart-float 5s ease-in-out infinite;
+}
+@keyframes lux-heart-float {
+  0% { opacity: 0; transform: translateY(6px) scale(0.8); }
+  30% { opacity: 0.9; }
+  70% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-16px) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lux-frame, .lux-bloom, .lux-halo, .lux-shimmer,
+  .lux-sparkle, .lux-heart { animation: none !important; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--blush);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hot-pink);
+  border-radius: 4px;
+}
+
+/* Form focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--hot-pink);
+  outline-offset: 2px;
+}

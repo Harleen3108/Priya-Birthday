@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450">
+  <rect fill="#FBF8F3" width="600" height="450"/>
+  <rect x="40" y="40" width="520" height="300" rx="12" fill="#F45B9E" opacity="0.12"/>
+  <circle cx="200" cy="190" r="60" fill="#F9D9DE"/>
+  <circle cx="400" cy="190" r="60" fill="#F9D9DE"/>
+  <text x="300" y="420" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#1a1a1a" opacity="0.3">work-4.svg</text>
+</svg>
