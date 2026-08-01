@@ -53,7 +53,7 @@ export function JourneyTimeline() {
             <DottedRing className="absolute -inset-2" />
             <div className="profile-ring relative h-48 w-48 overflow-hidden rounded-full md:h-52 md:w-52">
               <Image
-                src="/images/profile-photo.svg"
+                src="/images/profile-photo.jpg"
                 alt={`${creator.name} profile`}
                 fill
                 className="object-cover"

@@ -3,6 +3,7 @@
 import { Hero } from "@/components/Hero";
 import { JourneyTimeline } from "@/components/JourneyTimeline";
 import { ChannelsGrid } from "@/components/ChannelsGrid";
+import { ReelsCarousel } from "@/components/ReelsCarousel";
 import { WorkGallery } from "@/components/WorkGallery";
 import { ContactForm } from "@/components/ContactForm";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -14,6 +15,7 @@ export default function PortfolioPage() {
       <Hero />
       <JourneyTimeline />
       <ChannelsGrid />
+      <ReelsCarousel />
       <WorkGallery />
       <TestimonialsSection />
       <ContactForm />

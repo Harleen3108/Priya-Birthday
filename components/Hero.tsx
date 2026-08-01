@@ -30,7 +30,7 @@ export function Hero() {
           >
             <div className="relative h-64 w-52 overflow-hidden rounded-2xl md:h-80 md:w-64">
               <Image
-                src="/images/hero-photo.svg"
+                src="/images/hero-photo.jpg"
                 alt={creator.name}
                 fill
                 className="object-cover object-top"

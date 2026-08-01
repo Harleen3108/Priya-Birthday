@@ -22,7 +22,7 @@ export function ChannelsGrid() {
           Find Me Online
         </BubbleText>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8">
           {channels.map((channel, i) => (
             <motion.a
               key={channel.platform}

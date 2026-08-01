@@ -294,7 +294,13 @@ body {
   100% { opacity: 0; transform: translateY(-16px) scale(1); }
 }
 
+/* Smooth page scrolling — the reels rail reads much better with it */
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .lux-frame, .lux-bloom, .lux-halo, .lux-shimmer,
   .lux-sparkle, .lux-heart { animation: none !important; }
 }
@@ -319,4 +325,13 @@ textarea:focus,
 select:focus {
   outline: 2px solid var(--hot-pink);
   outline-offset: 2px;
+}
+
+/* Horizontal carousel track — scrollable, but without the visible bar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
