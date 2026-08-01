@@ -1,6 +1,16 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+/**
+ * Built on first use rather than at import time.
+ * `new Resend(undefined)` throws, and `next build` imports this module to collect
+ * route data — long before any request, and often before env vars are available.
+ */
+let client: Resend | null = null;
+
+function getResend(apiKey: string): Resend {
+  if (!client) client = new Resend(apiKey);
+  return client;
+}
 
 export interface ContactEmailPayload {
   name: string;
@@ -10,9 +20,10 @@ export interface ContactEmailPayload {
 }
 
 export async function sendContactEmail(payload: ContactEmailPayload) {
+  const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_EMAIL_TO;
 
-  if (!process.env.RESEND_API_KEY || !to) {
+  if (!apiKey || !to) {
     throw new Error("Email configuration is missing.");
   }
 
@@ -31,7 +42,7 @@ export async function sendContactEmail(payload: ContactEmailPayload) {
     <p>${message.replace(/\n/g, "<br />")}</p>
   `;
 
-  return resend.emails.send({
+  return getResend(apiKey).emails.send({
     from: "Portfolio Contact <onboarding@resend.dev>",
     to,
     replyTo: email,
